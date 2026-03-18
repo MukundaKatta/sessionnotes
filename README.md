@@ -1,80 +1,43 @@
-# SessionNotes
+# sessionnotes
 
-AI Therapy Note Generator - automatically generate structured clinical notes from therapy session transcripts.
+**SessionNotes — AI Therapy Note Generator. Generate SOAP notes from therapy session recordings.**
 
-## Features
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-- **SOAP Notes** - Subjective, Objective, Assessment, Plan format
-- **DAP Notes** - Data, Assessment, Plan format
-- **BIRP Notes** - Behavior, Intervention, Response, Plan format
-- **Theme Extraction** - Identify recurring themes and topics from sessions
-- **Progress Tracking** - Compare client progress across multiple sessions
-- **Risk Screening** - Flag safety concerns (suicidal ideation, self-harm, substance abuse)
-- **Rich Reports** - Beautiful terminal output with Rich
-
-## Installation
-
+## Install
 ```bash
-pip install -e .
+pip install -e ".[dev]"
 ```
 
-## Usage
-
-### Generate a SOAP Note
-
-```bash
-sessionnotes generate --format soap --transcript "Client reported feeling anxious..."
+## Quick Start
+```python
+from src.core import Sessionnotes
+ instance = Sessionnotes()
+r = instance.generate(input="test")
 ```
 
-### Generate a DAP Note
-
+## CLI
 ```bash
-sessionnotes generate --format dap --transcript "Client discussed relationship conflicts..."
+python -m src status
+python -m src run --input "data"
 ```
 
-### Generate a BIRP Note
+## API
+| Method | Description |
+|--------|-------------|
+| `generate()` | Generate |
+| `create()` | Create |
+| `validate()` | Validate |
+| `preview()` | Preview |
+| `export()` | Export |
+| `get_templates()` | Get templates |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
 
+## Test
 ```bash
-sessionnotes generate --format birp --transcript "Client arrived on time, appeared well-groomed..."
+pytest tests/ -v
 ```
-
-### Analyze Themes
-
-```bash
-sessionnotes analyze themes --transcript "Client discussed work stress and family conflicts..."
-```
-
-### Screen for Risk
-
-```bash
-sessionnotes analyze risk --transcript "Client mentioned feeling hopeless..."
-```
-
-### Generate Report
-
-```bash
-sessionnotes report --client-id CLIENT001 --sessions session1.json session2.json
-```
-
-## Note Formats
-
-### SOAP (Subjective, Objective, Assessment, Plan)
-- **Subjective**: Client's self-reported experiences, feelings, and concerns
-- **Objective**: Therapist's observations of client behavior, affect, and presentation
-- **Assessment**: Clinical interpretation, diagnosis considerations, and progress evaluation
-- **Plan**: Treatment goals, interventions, and next steps
-
-### DAP (Data, Assessment, Plan)
-- **Data**: All relevant information gathered during the session
-- **Assessment**: Clinical interpretation and analysis
-- **Plan**: Future treatment directions and action items
-
-### BIRP (Behavior, Intervention, Response, Plan)
-- **Behavior**: Observable client behaviors and presenting issues
-- **Intervention**: Therapeutic techniques and interventions used
-- **Response**: Client's response to interventions
-- **Plan**: Next steps and future session planning
 
 ## License
-
-MIT
+(c) 2026 Officethree Technologies. All Rights Reserved.
